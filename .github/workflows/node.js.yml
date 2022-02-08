@@ -32,8 +32,7 @@ jobs:
       run: zip -r test-pulumi.zip .
       if: contains( steps.extract_branch.outputs.branch, 'main' )  
     - run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
-    - run: cd -
-    - run: cd pulumi
+    - run: cd ../pulumi
     - uses: pulumi/actions@v3
       with:
         command: preview
