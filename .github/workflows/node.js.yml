@@ -31,7 +31,9 @@ jobs:
 #      if: contains( steps.extract_branch.outputs.branch, 'main' )
 #      run: echo ${{ secrets.PULUMI_ACCESS_TOKEN }} && zip -r test-pulumi.zip .
     - name: After setting up the Pulumi project specific language environment, we need to install the dependencies also
-      run: npm install
+      run: |
+        cd pulumi
+        npm install
       with:
         working-directory: pulumi
     - uses: pulumi/actions@v3
