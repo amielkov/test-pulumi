@@ -34,31 +34,6 @@ jobs:
       with:
         command: preview
         stack-name: dev
+        work-dir: pulumi
       env:
         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
-          
-#     runs-on: ubuntu-latest
-
-#     steps:
-#     - uses: actions/checkout@v2
-#     - name: Use Node.js ${{ matrix.node-version }}
-#       uses: actions/setup-node@v2
-#       with:
-#         node-version: 14.x
-#     - run: npm i
-#     - name: Extract branch name
-#       shell: bash
-#       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-#       id: extract_branch
-#     - name: Zip release package
-#       if: contains( steps.extract_branch.outputs.branch, 'release' )
-#       run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
-#     - name: Zip dev package
-#       if: contains( steps.extract_branch.outputs.branch, 'main' )  
-#       run: zip -r test-pulumi.zip .
-#     - uses: pulumi/actions@v3
-#       with:
-#         command: preview
-#         stack-name: dev
-#       env:
-#         PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
