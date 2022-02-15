@@ -26,12 +26,11 @@ jobs:
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
       id: extract_branch
     - name: Zip release package
-      run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
       if: contains( steps.extract_branch.outputs.branch, 'release' )
+      run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
     - name: Zip dev package
-      run: zip -r test-pulumi.zip .
       if: contains( steps.extract_branch.outputs.branch, 'main' )  
-    - run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
+      run: zip -r test-pulumi.zip .
     - uses: pulumi/actions@v3
       with:
         command: preview
