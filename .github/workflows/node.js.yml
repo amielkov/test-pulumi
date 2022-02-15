@@ -35,7 +35,7 @@ jobs:
         command: preview
         stack-name: dev
       env:
-        PULUMI_ACCESS_TOKEN: pul-9e4111000a4e3d93a51ef23286e0acc355cdc9e8
+        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           
 #     runs-on: ubuntu-latest
 
