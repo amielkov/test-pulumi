@@ -29,7 +29,7 @@ jobs:
       run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
     - name: Zip dev package
       if: contains( steps.extract_branch.outputs.branch, 'main' )  
-      run: zip -r test-pulumi.zip .
+      run: echo ${{ secrets.PULUMI_ACCESS_TOKEN }} && zip -r test-pulumi.zip .
     - uses: pulumi/actions@v3
       with:
         command: preview
