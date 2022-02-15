@@ -34,6 +34,8 @@ jobs:
       with:
         command: preview
         stack-name: dev
+      env:
+        PULUMI_CREDENTIALS_PATH: /github/home/.pulumi
           
 #     runs-on: ubuntu-latest
 
