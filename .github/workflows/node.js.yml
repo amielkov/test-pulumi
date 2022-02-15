@@ -34,8 +34,6 @@ jobs:
       run: |
         cd pulumi
         npm install
-      with:
-        working-directory: pulumi
     - uses: pulumi/actions@v3
       with:
         command: preview
