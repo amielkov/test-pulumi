@@ -30,6 +30,12 @@ jobs:
 #    - name: Zip dev package
 #      if: contains( steps.extract_branch.outputs.branch, 'main' )
 #      run: echo ${{ secrets.PULUMI_ACCESS_TOKEN }} && zip -r test-pulumi.zip .
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-region: ${{ secrets.AWS_REGION }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: After setting up the Pulumi project specific language environment, we need to install the dependencies also
       run: |
         cd pulumi
