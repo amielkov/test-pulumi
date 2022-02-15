@@ -35,7 +35,7 @@ jobs:
         command: preview
         stack-name: dev
       env:
-        PULUMI_CREDENTIALS_PATH: /github/home/.pulumi
+        PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           
 #     runs-on: ubuntu-latest
 
