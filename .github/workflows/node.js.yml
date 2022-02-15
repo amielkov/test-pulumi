@@ -19,17 +19,21 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: 14.x
-    - run: npm i
-    - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
-    - name: Zip release package
-      if: contains( steps.extract_branch.outputs.branch, 'release' )
-      run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
-    - name: Zip dev package
-      if: contains( steps.extract_branch.outputs.branch, 'main' )  
-      run: echo ${{ secrets.PULUMI_ACCESS_TOKEN }} && zip -r test-pulumi.zip .
+#    - run: npm i
+#    - name: Extract branch name
+#      shell: bash
+#      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+#      id: extract_branch
+#    - name: Zip release package
+#      if: contains( steps.extract_branch.outputs.branch, 'release' )
+#      run: zip -r test-pulumi-${{ steps.extract_branch.outputs.branch }}.zip .
+#    - name: Zip dev package
+#      if: contains( steps.extract_branch.outputs.branch, 'main' )
+#      run: echo ${{ secrets.PULUMI_ACCESS_TOKEN }} && zip -r test-pulumi.zip .
+    - name: After setting up the Pulumi project specific language environment, we need to install the dependencies also
+      run: npm install
+      with:
+        working-directory: pulumi
     - uses: pulumi/actions@v3
       with:
         command: preview
