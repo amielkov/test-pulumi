@@ -1,5 +1,5 @@
 import * as aws from "@pulumi/aws";
-import * as ssmValues from "../ssm_values/dev1.json"
+const ssmValues = require("../ssm_values/dev1.json");
 
 
 for (const [key, value] of Object.entries<string>(ssmValues)) {
